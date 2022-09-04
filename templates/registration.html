@@ -1,0 +1,38 @@
+<!-- templates/login.html -->
+
+{% extends "base.html" %}
+
+{% block head %}
+
+<title>регистрация</title>
+
+{% endblock %}
+
+
+
+{% block body %}
+<div class="column is-4 is-offset-4">
+    <h3 class="title">Registration</h3>
+    <div class="box">
+
+        {% if wrong_password: %}
+            <p>wrong password</p>
+        {% endif %}
+
+        <form method="POST" action="/registration.html">
+            <div class="field">
+                <div class="control">
+                    <input type="text" value = "логин "name="login" placeholder="Your Email" autofocus="">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <input  type="password" name="password" value = "пароль" placeholder="Your Password">
+                </div>
+            </div>
+            <button>Registrate</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
