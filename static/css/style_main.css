@@ -1,0 +1,77 @@
+.reg_but {
+        text-decoration: none;
+        display: inline-block;
+        padding: 5px 10px;
+        margin: 10px 10px;
+        border-radius: 10px;
+        background-color: #add8e6;
+        letter-spacing: 2px;
+        color: #0b6683;        ;
+        transition: .15s ease-in-out;
+        border: none;
+      }
+      .reg_but:hover {
+        box-shadow: 0 0 10px 0 #0f8cb4 inset, 0 0 10px 4px #0f8cb4;
+        color: #0b6683;
+        background-color: #add8e6;
+      }
+       .noDisp{
+           display: none;
+       }
+
+       header {
+        display: block;
+        /* Для старых браузеров */
+        height: 60px;
+        margin: 0;
+        background-color: lightblue;
+    }
+
+    .reg_but_right_corner{
+        display: inline-block;
+        float: right;
+    }
+
+    .placeholder {
+        color: #444;
+    }
+
+
+
+    form {
+        border: 3px solid #f1f1f1;
+        width: 50%;
+    }
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.reg_but_form {
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 10px 10px;
+    border-radius: 10px;
+    letter-spacing: 2px;
+    color: #000000;        ;
+    transition: .15s ease-in-out;
+    border: none;
+    background-color:#ffffff00;
+  }
+  .reg_but_form:hover {
+    box-shadow: 0 0 10px 0 #0f8cb4 inset, 0 0 10px 4px #0f8cb4;
+    color: #000000;
+    background-color:#ffffff00;
+  }
+
+
+.container {
+  padding: 16px;
+}
+

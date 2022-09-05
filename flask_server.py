@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, make_response, session
-from time import asctime
 import db_logic
 import os
 
@@ -8,17 +7,7 @@ server_object = Flask(__name__)
 
 @server_object.route('/', methods=['GET', 'POST'])
 def index():
-    # чтобы получить тип запроса из функции, обрабатывающей запрос,
-    # вызываем request.method
-    if 'time' in session:
-        print('Yes')
-    else:
-        print('No')
-    session['time'] = asctime()
-    if request.method == 'GET':
-        if 'time' in session:
-            return render_template('index.html', time=session['time'])
-        return render_template('index.html')
+    return render_template('index.html')
 
 
 @server_object.route('/page2.html', methods=['GET', 'POST'])
@@ -47,7 +36,7 @@ def login():
         if true_password == user_password:
             session['is_logged_in'] = True
             session['login'] = user_login 
-            return render_template('index.html')
+            return render_template('content_lectures.html', lectures_list = os.listdir('templates/lectures'))
         return render_template('login.html', wrong_password=True)
 
     return render_template('login.html', wrong_login=True)
@@ -64,13 +53,13 @@ def registration():
     if such_users == 0:
         db_logic.add_user(new_login, new_password)
         session['is_logged_in'] = True
-        session['login'] = user_login 
+        session['login'] = new_login 
         return render_template('index.html')
 
     true_password = db_logic.get_password_by_login(new_login)
     if true_password == new_password:
         session['is_logged_in'] = True
-        session['login'] = user_login 
+        session['login'] = new_login 
         return render_template('index.html')
 
     return render_template('registration.html', wrong_password=True)
@@ -81,12 +70,12 @@ def lecture(lecture_num):
     return render_template(f'/lectures/lecture_{lecture_num}.html', lecture_num=int(lecture_num), lectures_total_num = len(os.listdir('templates/lectures')))
 
 
-@server_object.route('/lectures_table_of_contents.html', methods=['GET', 'POST'])
+@server_object.route('/content_lectures.html', methods=['GET', 'POST'])
 def lectures_table_of_contents():
-    return render_template('/lectures_table_of_contents.html', lectures_list = os.listdir('templates/lectures'))
+    return render_template('/content_lectures.html', lectures_list = os.listdir('templates/lectures'))
 
 
 
 if __name__ == '__main__':
-    server_object.secret_key = 'abodwdwfebtgta'
+    server_object.secret_key = 'abodwdfebtgta'
     server_object.run(debug=True)

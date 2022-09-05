@@ -1,0 +1,175 @@
+{% extends 'lecture_base.html' %}
+
+
+
+{% block head %}
+<title>Lecture {{lecture_num}}</title>
+{% endblock %}
+
+
+{% block body %}
+
+
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Input-and-Output-History">Input and Output History<a class="anchor-link" href="#Input-and-Output-History">&#182;</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Previously we saw that the IPython shell allows you to access previous commands with the up and down arrow keys, or equivalently the Ctrl-p/Ctrl-n shortcuts.
+Additionally, in both the shell and the notebook, IPython exposes several ways to obtain the output of previous commands, as well as string versions of the commands themselves.
+We'll explore those here.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="IPython's-In-and-Out-Objects">IPython's <code>In</code> and <code>Out</code> Objects<a class="anchor-link" href="#IPython's-In-and-Out-Objects">&#182;</a></h2><p>By now I imagine you're quite familiar with the <code>In [1]:</code>/<code>Out[1]:</code> style prompts used by IPython.
+But it turns out that these are not just pretty decoration: they give a clue as to how you can access previous inputs and outputs in your current session.
+Imagine you start a session that looks like this:</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="mf">0.9092974268256817</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="o">-</span><span class="mf">0.4161468365471424</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We've imported the built-in <code>math</code> package, then computed the sine and the cosine of the number 2.
+These inputs and outputs are displayed in the shell with <code>In</code>/<code>Out</code> labels, but there's more–IPython actually creates some Python variables called <code>In</code> and <code>Out</code> that are automatically updated to reflect this history:</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="nb">print</span><span class="p">(</span><span class="n">In</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;import math&#39;</span><span class="p">,</span> <span class="s1">&#39;math.sin(2)&#39;</span><span class="p">,</span> <span class="s1">&#39;math.cos(2)&#39;</span><span class="p">,</span> <span class="s1">&#39;print(In)&#39;</span><span class="p">]</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">Out</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="p">{</span><span class="mi">2</span><span class="p">:</span> <span class="mf">0.9092974268256817</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.4161468365471424</span><span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The <code>In</code> object is a list, which keeps track of the commands in order (the first item in the list is a place-holder so that <code>In[1]</code> can refer to the first command):</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="nb">print</span><span class="p">(</span><span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="kn">import</span> <span class="nn">math</span>
+</pre></div>
+<p>The <code>Out</code> object is not a list but a dictionary mapping input numbers to their outputs (if any):</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="nb">print</span><span class="p">(</span><span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="mf">0.9092974268256817</span>
+</pre></div>
+<p>Note that not all operations have outputs: for example, <code>import</code> statements and <code>print</code> statements don't affect the output.
+The latter may be surprising, but makes sense if you consider that <code>print</code> is a function that returns <code>None</code>; for brevity, any command that returns <code>None</code> is not added to <code>Out</code>.</p>
+<p>Where this can be useful is if you want to interact with past results.
+For example, let's check the sum of <code>sin(2) ** 2</code> and <code>cos(2) ** 2</code> using the previously-computed results:</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="mf">1.0</span>
+</pre></div>
+<p>The result is <code>1.0</code> as we'd expect from the well-known trigonometric identity.
+In this case, using these previous results probably is not necessary, but it can become very handy if you execute a very expensive computation and want to reuse the result!</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Underscore-Shortcuts-and-Previous-Outputs">Underscore Shortcuts and Previous Outputs<a class="anchor-link" href="#Underscore-Shortcuts-and-Previous-Outputs">&#182;</a></h2><p>The standard Python shell contains just one simple shortcut for accessing previous output; the variable <code>_</code> (i.e., a single underscore) is kept updated with the previous output; this works in IPython as well:</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="nb">print</span><span class="p">(</span><span class="n">_</span><span class="p">)</span>
+<span class="mf">1.0</span>
+</pre></div>
+<p>But IPython takes this a bit further—you can use a double underscore to access the second-to-last output, and a triple underscore to access the third-to-last output (skipping any commands with no output):</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="nb">print</span><span class="p">(</span><span class="n">__</span><span class="p">)</span>
+<span class="o">-</span><span class="mf">0.4161468365471424</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="nb">print</span><span class="p">(</span><span class="n">___</span><span class="p">)</span>
+<span class="mf">0.9092974268256817</span>
+</pre></div>
+<p>IPython stops there: more than three underscores starts to get a bit hard to count, and at that point it's easier to refer to the output by line number.</p>
+<p>There is one more shortcut we should mention, however–a shorthand for <code>Out[X]</code> is <code>_X</code> (i.e., a single underscore followed by the line number):</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="mf">0.9092974268256817</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="n">_2</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="mf">0.9092974268256817</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Suppressing-Output">Suppressing Output<a class="anchor-link" href="#Suppressing-Output">&#182;</a></h2><p>Sometimes you might wish to suppress the output of a statement (this is perhaps most common with the plotting commands that we'll explore in <a href="04.00-Introduction-To-Matplotlib.ipynb">Introduction to Matplotlib</a>).
+Or maybe the command you're executing produces a result that you'd prefer not like to store in your output history, perhaps so that it can be deallocated when other references are removed.
+The easiest way to suppress the output of a command is to add a semicolon to the end of the line:</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</pre></div>
+<p>Note that the result is computed silently, and the output is neither displayed on the screen or stored in the <code>Out</code> dictionary:</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="mi">14</span> <span class="ow">in</span> <span class="n">Out</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="kc">False</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Related-Magic-Commands">Related Magic Commands<a class="anchor-link" href="#Related-Magic-Commands">&#182;</a></h2><p>For accessing a batch of previous inputs at once, the <code>%history</code> magic command is very helpful.
+Here is how you can print the first four inputs:</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="o">%</span><span class="k">history</span> -n 1-4
+   <span class="mi">1</span><span class="p">:</span> <span class="kn">import</span> <span class="nn">math</span>
+   <span class="mi">2</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+   <span class="mi">3</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+   <span class="mi">4</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">In</span><span class="p">)</span>
+</pre></div>
+<p>As usual, you can type <code>%history?</code> for more information and a description of options available.
+Other similar magic commands are <code>%rerun</code> (which will re-execute some portion of the command history) and <code>%save</code> (which saves some set of the command history to a file).
+For more information, I suggest exploring these using the <code>?</code> help functionality discussed in <a href="01.01-Help-And-Documentation.ipynb">Help and Documentation in IPython</a>.</p>
+
+{% endblock %}
