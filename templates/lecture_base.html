@@ -51,6 +51,8 @@
     data-jp-theme-name="JupyterLab Light">
 
     <header>
+
+
       <div>
         <div class="reg_but">
           <a href="content_lectures.html">Table of contents</a>
@@ -60,99 +62,101 @@
         </div>
 
         <div class="reg_but_right_corner">
-          <p class="reg_but"> Пользователь: {{session['login']}}</p>
-          <p class="reg_but"> Sign out (not working)</p>
+          <p class="reg_but"> User: {{session['login']}}</p>
+          <form action="/login.html" class="form_logout" method="GET">
+            <button class="reg_but" style = "font-size: 16px !important; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
+            Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">Sign out</button>
+          </form>
         </div>
+
+
 
       </header>
-    </header>
-    
 
-    <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-      <div class="jp-Cell-inputWrapper">
-        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-        </div>
-        <div class="jp-InputArea jp-Cell-inputArea">
-          <div class="jp-InputPrompt jp-InputArea-prompt">
+
+      <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+        <div class="jp-Cell-inputWrapper">
+          <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
           </div>
-          <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown
-            jp-MarkdownOutput " data-mime-type="text/markdown">
-            <p>
+          <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">
+            </div>
+            <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown
+              jp-MarkdownOutput " data-mime-type="text/markdown">
+              <p>
 
-              {%if lecture_num == 1: %}
-              &lt;
-              <a href="content_lectures.html">Table of contents</a> |
-              <a href="/lecture_{{lecture_num+1}}.html">Next Lecture</a>
-              &gt;
-              {%endif%}
-
-              {%if lecture_num <lectures_total_num and lecture_num != 1: %}
-
+                {%if lecture_num == 1: %}
                 &lt;
-              <a href="/lecture_{{lecture_num-1}}.html">Previous Lecture</a> |
-              <a href="/content_lectures.html">Table of contents</a> |
-              <a href="/lecture_{{lecture_num+1}}.html">Next Lecture</a>
-              &gt;
+                <a href="content_lectures.html">Table of contents</a> |
+                <a href="/lecture_{{lecture_num+1}}.html">Next Lecture</a>
+                &gt;
+                {%endif%}
 
-              {%endif%}
+                {%if lecture_num <lectures_total_num and lecture_num != 1: %}
+                  &lt;
+                <a href="/lecture_{{lecture_num-1}}.html">Previous Lecture</a> |
+                <a href="/content_lectures.html">Table of contents</a> |
+                <a href="/lecture_{{lecture_num+1}}.html">Next Lecture</a>
+                &gt;
 
-              {%if lecture_num == lectures_total_num: %}
-              &lt;
-              <a href="/lecture_{{lecture_num-1}}.html">Previous Lecture</a> |
-              <a href="content_lectures.html">Table of contents</a>
-              &gt;
-              {%endif%}
+                {%endif%}
 
-            </p>
+                {%if lecture_num == lectures_total_num: %}
+                &lt;
+                <a href="/lecture_{{lecture_num-1}}.html">Previous Lecture</a> |
+                <a href="content_lectures.html">Table of contents</a>
+                &gt;
+                {%endif%}
 
+              </p>
+
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
 
-    {% block body%}{% endblock %}
+      {% block body%}{% endblock %}
 
-    <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-      <div class="jp-Cell-inputWrapper">
-        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-        </div>
-        <div class="jp-InputArea jp-Cell-inputArea">
-          <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown
-            jp-MarkdownOutput " data-mime-type="text/markdown">
-            <p>
+      <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+        <div class="jp-Cell-inputWrapper">
+          <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+          </div>
+          <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown
+              jp-MarkdownOutput " data-mime-type="text/markdown">
+              <p>
 
-              {%if lecture_num == 1: %}
-              &lt;
-              <a href="content_lectures.html">Table of contents</a> |
-              <a href="/lecture_{{lecture_num+1}}.html">Next Lecture</a>
-              &gt;
-              {%endif%}
-
-              {%if lecture_num <lectures_total_num and lecture_num != 1: %}
-
+                {%if lecture_num == 1: %}
                 &lt;
-              <a href="/lecture_{{lecture_num-1}}.html">Previous Lecture</a> |
-              <a href="/content_lectures.html">Table of contents</a> |
-              <a href="/lecture_{{lecture_num+1}}.html">Next Lecture</a>
-              &gt;
+                <a href="content_lectures.html">Table of contents</a> |
+                <a href="/lecture_{{lecture_num+1}}.html">Next Lecture</a>
+                &gt;
+                {%endif%}
 
-              {%endif%}
+                {%if lecture_num <lectures_total_num and lecture_num != 1: %}
+                  &lt;
+                <a href="/lecture_{{lecture_num-1}}.html">Previous Lecture</a> |
+                <a href="/content_lectures.html">Table of contents</a> |
+                <a href="/lecture_{{lecture_num+1}}.html">Next Lecture</a>
+                &gt;
 
-              {%if lecture_num == lectures_total_num: %}
-              &lt;
-              <a href="/lecture_{{lecture_num-1}}.html">Previous Lecture</a> |
-              <a href="content_lectures.html">Table of contents</a>
-              &gt;
-              {%endif%}
+                {%endif%}
 
-            </p>
+                {%if lecture_num == lectures_total_num: %}
+                &lt;
+                <a href="/lecture_{{lecture_num-1}}.html">Previous Lecture</a> |
+                <a href="content_lectures.html">Table of contents</a>
+                &gt;
+                {%endif%}
 
+              </p>
+
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-  </body>
+    </body>
 
-</html>
+  </html>

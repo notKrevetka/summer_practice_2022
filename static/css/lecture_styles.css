@@ -16982,9 +16982,12 @@ span.CodeMirror-selectedtext {
     font-family: monospace;
 }
 
-.CodeMirror-dialog button {
+.CodeMirror-dialog  {
     font-size: 70%;
 }
+/* .CodeMirror-dialog button {
+    font-size: 70%;
+} */
 
 .CodeMirror-foldmarker {
     color: blue;

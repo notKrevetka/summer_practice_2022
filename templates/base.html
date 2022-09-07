@@ -33,8 +33,10 @@
         {% if session['is_logged_in']: %}
         <header>
             <div class="reg_but_right_corner">
-                <p class="reg_but"> Пользователь: {{session['login']}}</p>
-                <p class="reg_but"> Sign out (not working)</p>
+                <p class="reg_but"> User: {{session['login']}}</p>
+                <form action="/login.html" class = "form_logout" method="GET">
+                    <button class="reg_but">Sign out</button>
+                </form>
             </div>
         </header>
         {% else %}

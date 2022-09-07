@@ -24,6 +24,8 @@ def show_template():
 
 @server_object.route('/login.html', methods=['GET', 'POST'])
 def login():
+    session['is_logged_in'] = False
+    session['login'] = None
     if request.method == 'GET':
         return render_template('login.html')
 
@@ -80,5 +82,5 @@ def lectures_table_of_contents():
 
 
 if __name__ == '__main__':
-    server_object.secret_key = 'aboedwdfebtgta'
+    server_object.secret_key = 'abodwdfebtgta'
     server_object.run(debug=True)
