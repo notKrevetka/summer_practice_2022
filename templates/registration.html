@@ -21,24 +21,28 @@
     <div class="box">
 
         {% if wrong_password: %}
-            <p>wrong password</p>
+        <p>wrong password</p>
         {% endif %}
 
 
-        
-        <form method="POST" action="/registration.html" >
-            <div class="field">
-                <div class="control">
-                    <input type="text" value = "логин "name="login" placeholder="Your Email" autofocus="">
-                </div>
-            </div>
 
-            <div class="field">
-                <div class="control">
-                    <input  type="password" name="password" value = "пароль" placeholder="Your Password">
-                </div>
+        <form action="/registration.html" method="POST">
+
+            <div class="container">
+                <label for="uname"><b>Login</b></label>
+                <input type="text" placeholder="Enter Login" name="login"
+                    required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password"
+                    name="password" required>
+                <label for="psw_check"><b>Repeat Password</b></label>
+                <input type="password" placeholder="Enter Password"
+                    name="password_check" required>
+
+                <button class="reg_but_form">Sign up</button>
+                <a href="/login.html" class="reg_but_form">Sign in</a>
             </div>
-            <button>Registrate</button>
         </form>
     </div>
 </div>

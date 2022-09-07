@@ -64,3 +64,5 @@ def get_password_by_login(login):
     the_password = cur.fetchall()[0][0]
 
     return the_password
+
+

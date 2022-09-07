@@ -35,8 +35,8 @@ def login():
 
         if true_password == user_password:
             session['is_logged_in'] = True
-            session['login'] = user_login 
-            return render_template('content_lectures.html', lectures_list = os.listdir('templates/lectures'))
+            session['login'] = user_login
+            return render_template('content_lectures.html', lectures_list=os.listdir('templates/lectures'))
         return render_template('login.html', wrong_password=True)
 
     return render_template('login.html', wrong_login=True)
@@ -47,35 +47,38 @@ def registration():
     if request.method == 'GET':
         return render_template('registration.html')
 
-    new_login, new_password = request.form['login'], request.form['password']
+    new_login, new_password, password_check = request.form['login'], request.form['password'],  request.form['password_check']
 
     such_users = db_logic.count_users_with_such_login(new_login)
+
     if such_users == 0:
-        db_logic.add_user(new_login, new_password)
-        session['is_logged_in'] = True
-        session['login'] = new_login 
-        return render_template('index.html')
+        if new_password == password_check:
+            db_logic.add_user(new_login, new_password)
+            session['is_logged_in'] = True
+            session['login'] = new_login
+            return render_template('content_lectures.html', lectures_list=os.listdir('templates/lectures'))
+        else:
+            return render_template('registration.html', wrong_password=True)
 
     true_password = db_logic.get_password_by_login(new_login)
-    if true_password == new_password:
+    if true_password == new_password and true_password == password_check:
         session['is_logged_in'] = True
-        session['login'] = new_login 
-        return render_template('index.html')
+        session['login'] = new_login
+        return render_template('content_lectures.html', lectures_list=os.listdir('templates/lectures'))
 
     return render_template('registration.html', wrong_password=True)
 
 
 @server_object.route('/lecture_<lecture_num>.html', methods=['GET', 'POST'])
 def lecture(lecture_num):
-    return render_template(f'/lectures/lecture_{lecture_num}.html', lecture_num=int(lecture_num), lectures_total_num = len(os.listdir('templates/lectures')))
+    return render_template(f'/lectures/lecture_{lecture_num}.html', lecture_num=int(lecture_num), lectures_total_num=len(os.listdir('templates/lectures')))
 
 
 @server_object.route('/content_lectures.html', methods=['GET', 'POST'])
 def lectures_table_of_contents():
-    return render_template('/content_lectures.html', lectures_list = os.listdir('templates/lectures'))
-
+    return render_template('/content_lectures.html', lectures_list=os.listdir('templates/lectures'))
 
 
 if __name__ == '__main__':
-    server_object.secret_key = 'abodwdfebtgta'
+    server_object.secret_key = 'aboedwdfebtgta'
     server_object.run(debug=True)
