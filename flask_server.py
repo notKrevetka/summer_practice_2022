@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, make_response, session
 import db_logic
 import os
+import json
 
 server_object = Flask(__name__)
 
@@ -79,6 +80,29 @@ def lecture(lecture_num):
 @server_object.route('/content_lectures.html', methods=['GET', 'POST'])
 def lectures_table_of_contents():
     return render_template('/content_lectures.html', lectures_list=os.listdir('templates/lectures'))
+
+
+@server_object.route('/test_<test_num>.html', methods=['GET', 'POST'])
+def test(test_num):
+    with open('test_content.json', 'r', encoding='utf-8') as f:
+        all_test_obj = json.load(f)
+        all_tests_list = all_test_obj["tests"]
+        this_test = all_tests_list[int(test_num)-1]
+        print(this_test, test_num)
+    return render_template('/test_base.html', test_num=int(test_num), this_test=this_test)
+
+
+@server_object.route('/content_tests.html', methods=['GET', 'POST'])
+def lectures_table_of_tests():
+    return render_template('/content_tests.html', lectures_total_num=len(os.listdir('templates/lectures')))
+
+
+
+
+
+
+
+
 
 
 if __name__ == '__main__':

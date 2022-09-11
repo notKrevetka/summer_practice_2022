@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+
+{% block head %}
+<title>Test</title>
+{% endblock %}
+
+
+{% block body %}
+<form>
+  <h1> Test {{test_num}}</h1>
+
+
+  {%for question in this_test: %}
+  <div>
+    <p>{{question["q_text"]}}</p>
+    {%for option in question["options"]: %}
+    <div>
+      <input type="radio" name="{{question['answ!']}}" value="{{option}}">
+      <label for="huey">{{option}}</label>
+    </div>
+
+    {%endfor%}
+
+  </div>
+
+  {%endfor%}
+
+</form>
+
+
+{% endblock %}
