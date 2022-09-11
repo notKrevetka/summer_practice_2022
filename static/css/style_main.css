@@ -92,4 +92,10 @@ input[type=text], input[type=password] {
 .container {
   padding: 16px;
 }
-
+.question{
+  margin-bottom: 10px;
+}
+.answer{
+  padding: 4px;
+  padding-left: 15px;
+}

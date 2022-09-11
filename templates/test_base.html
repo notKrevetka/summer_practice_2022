@@ -8,26 +8,38 @@
 
 
 {% block body %}
-<form>
-  <h1> Test {{test_num}}</h1>
+
+<h1> Test {{test_num}}</h1>
 
 
-  {%for question in this_test: %}
-  <div>
-    <p>{{question["q_text"]}}</p>
-    {%for option in question["options"]: %}
-    <div>
-      <input type="radio" name="{{question['answ!']}}" value="{{option}}">
-      <label for="huey">{{option}}</label>
-    </div>
-
-    {%endfor%}
-
+{%for question in this_test: %}
+<div class="question">
+  <h3>{{question["q_text"]}}</h3>
+  {%for option in question["options"]: %}
+  <div class="answer">
+    <input type="radio" name="{{question['answ!']}}" value="{{option}}">
+    <label>{{option}}</label>
   </div>
-
   {%endfor%}
+</div>
+{%endfor%}
+<button class="reg_but_form" value="Check" onclick="f_test_check()">Check
+  answers</button>
 
-</form>
-
-
+<script>
+      function f_test_check(){
+        var rbs = document.getElementsByTagName("input");    
+        for (var i = 0; i < rbs.length; i++) {
+          if(rbs[i].checked){
+            if (rbs[i].name == rbs[i].value){
+            rbs[i].parentElement.style.background ="lightblue";
+            console.log(rbs[i])} else{
+              rbs[i].parentElement.style.background ="red";
+            }
+          } else{
+            rbs[i].parentElement.style.background ="white";
+          }
+        }
+      }
+    </script>
 {% endblock %}

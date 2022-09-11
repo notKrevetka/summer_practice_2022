@@ -17,9 +17,9 @@
 
 <ul>
     <!-- For loop logic of jinja template -->
-    {%for x in lectures_list: %}
+    {%for a,b in lectures_list: %}
         <li>
-            <a href="/{{x}}">{{'Лекция: '+ x}}</a>
+            <a href="/{{a}}">{{'Лекция: '+ b}}</a>
         </li>
     {%endfor%}
 </ul>
