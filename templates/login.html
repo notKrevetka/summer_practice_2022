@@ -3,37 +3,25 @@
 {% extends "base.html" %}
 
 {% block head %}
-
 <title>регистрация</title>
-
 {% endblock %}
-
-
-
 {% block body %}
 <div class="column is-4 is-offset-4">
     <h3 class="title">Sign in</h3>
     <div class="box">
-
         {% if wrong_password: %}
         <p>wrong password</p>
         {% endif %}
-
         {% if wrong_login: %}
         <p>wrong login</p>
-        {% endif %}
-
-
+        {% endif %} 
         <form action="/login.html" class = "form_style" method="POST">
-
             <div class="container">
                 <label for="uname"><b>Login</b></label>
-                <input type="text" placeholder="Enter Login" name="login"
-                    required>
+                <input type="text" placeholder="Enter Login" name="login"required>
 
                 <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password"
-                    name="password" required>
+                <input type="password" placeholder="Enter Password" name="password" required>
 
                 <button class="reg_but_form">Sign in</button>
                 <a href="/registration.html" class="reg_but_form">Sign Up</a>

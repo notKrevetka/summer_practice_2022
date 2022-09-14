@@ -2,26 +2,22 @@
     "tests": [
         [
             {
-                "q_text": "текст вопроса",
+                "q_text": "What IPythin is?",
                 "options": [
-                    "f,j,f 1",
-                    "ответ 2",
-                    "ответ 3",
-                    "ответ 4",
-                    "righrt answ"
+                    "interactive interface for python",
+                    "just a shell",
+                    "text editor for the browser"
                 ],
-                "answ!": "righrt answ"
+                "answ!": "interactive interface for python"
             },
             {
-                "q_text": " вопроса2",
+                "q_text": "How can you open IPyhon",
                 "options": [
-                    "ответ 1",
-                    "ответ 2",
-                    "ответ 3",
-                    "ответ 4",
-                    "righrt абоба answ"
+                    "in cmd",
+                    "in Ipyhon notebook",
+                    "both wariants"
                 ],
-                "answ!": "righrt абоба answ"
+                "answ!": "both wariants"
             }
         ],
         [

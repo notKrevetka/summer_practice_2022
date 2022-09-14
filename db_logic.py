@@ -26,24 +26,19 @@ def check_table(conn, cur):
 
 def count_users_with_such_login(login):
     conn, cur = get_connection('db.db')
-
     check_table(conn, cur)
-
     query = f"""
     SELECT COUNT(*) FROM users_info
     WHERE login = "{login}"
     """
     cur.execute(query)
     number_of_users_with_such_login = cur.fetchall()[0][0]
-
     return number_of_users_with_such_login
 
 
 def add_user(login, password):
     conn, cur = get_connection('db.db')
-
     check_table(conn, cur)
-
     query = f"""
     INSERT INTO users_info (login, password)
     VALUES ("{login}", "{password}")
@@ -51,18 +46,15 @@ def add_user(login, password):
     cur.execute(query)
     conn.commit()
 
-
 def get_password_by_login(login):
     conn, cur = get_connection('db.db')
     check_table(conn, cur)
-
     query = f"""
     SELECT password FROM users_info
     WHERE login = "{login}"
     """
     cur.execute(query)
     the_password = cur.fetchall()[0][0]
-
     return the_password
 
 
