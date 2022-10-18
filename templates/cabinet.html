@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Headings</title>
+{% endblock %}
+{% block body %}
+<div class="modal-body row">
+    <div class="col-md-4">
+       <h1>Table of contents</h1>
+        <ul>
+            {%for a,b in lectures_list: %}
+            <li>
+                <a href="/{{a}}">{{'Lecture: '+ b}}</a>
+            </li>
+            {%endfor%}
+        </ul>
+    </div>
+
+    <div class="col-md-4">
+        <h1>Table of Tests</h1>
+        <ul>
+            {%for test_num in range(1, lectures_total_num+1): %}
+            <li>
+                <a href="/test_{{test_num}}.html">Test {{test_num }}</a>
+            </li>
+            {%endfor%}
+        </ul>
+
+    </div>
+    <div class="col-md-4">
+        <h1>Results</h1>
+        <ul>
+            {%for test_num in range(1, lectures_total_num+1): %}
+            <li>
+                <a href="/test_{{test_num}}.html">Test {{test_num }}</a>
+            </li>
+            {%endfor%}
+        </ul>
+
+    </div>
+</div>
+
+
+
+{% endblock %}

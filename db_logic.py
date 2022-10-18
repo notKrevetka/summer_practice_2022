@@ -1,60 +1,45 @@
-import sqlite3
+from sqlalchemy import create_engine, inspect, select
+from sqlalchemy import Table, Column, Integer, String, MetaData, Date, Numeric, Boolean
 
 
-def get_connection(filepath):
-    try:
-        with open(filepath, 'x') as fp:
-            pass
-    except:
-        pass
+DBFILEPATH = 'sqlite:///db.db'
 
-    conn = sqlite3.connect(filepath)
-    cur = conn.cursor()
-    return conn, cur
+engine = create_engine(DBFILEPATH, echo=True)
+meta = MetaData()
 
+users_info = Table(
+    'users_info', meta,
+    Column('login', String, primary_key=True),
+    Column('password', String),
+)
 
-def check_table(conn, cur):
-    query = f"""
-    CREATE TABLE IF NOT EXISTS users_info(
-        login       TEXT PRIMARY KEY,
-        password    TEXT
-    );
-    """
-    cur.execute(query)
-    conn.commit()
+tests_results = Table(
+    'tests_results', meta,
+    Column('try_id', Integer, primary_key=True),
+    Column('login', String),
+    Column('test_num', String),
+    Column('result', String),
+    sqlite_autoincrement=True
+)
 
-
-def count_users_with_such_login(login):
-    conn, cur = get_connection('db.db')
-    check_table(conn, cur)
-    query = f"""
-    SELECT COUNT(*) FROM users_info
-    WHERE login = "{login}"
-    """
-    cur.execute(query)
-    number_of_users_with_such_login = cur.fetchall()[0][0]
-    return number_of_users_with_such_login
-
+meta.create_all(engine)
 
 def add_user(login, password):
-    conn, cur = get_connection('db.db')
-    check_table(conn, cur)
-    query = f"""
-    INSERT INTO users_info (login, password)
-    VALUES ("{login}", "{password}")
-    """
-    cur.execute(query)
-    conn.commit()
+    with engine.connect() as conn:
+        stmt1 = users_info.insert().values(login=login, password=password)
+        conn.execute(stmt1)
 
 def get_password_by_login(login):
-    conn, cur = get_connection('db.db')
-    check_table(conn, cur)
-    query = f"""
-    SELECT password FROM users_info
-    WHERE login = "{login}"
-    """
-    cur.execute(query)
-    the_password = cur.fetchall()[0][0]
-    return the_password
+     with engine.connect() as conn:
+        print(login)
+        stmt1 = select([users_info.c.password]).where(users_info.c.login == login)
+        result = conn.execute(stmt1)
+        return result.fetchone()[0]
 
+def count_users_with_such_login(login):
+     with engine.connect() as conn:
+        stmt1 = users_info.select().where(users_info.c.login == login)
+        return len(conn.execute(stmt1).fetchall())
 
+def add_test_try_result():
+    pass

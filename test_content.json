@@ -22,7 +22,7 @@
         ],
         [
             {
-                "q_text": "текст вопроса",
+                "q_text": "2текст вопроса",
                 "options": [
                     "абоба 1",
                     "ответ 2",
@@ -33,7 +33,75 @@
                 "answ!": "righrt answ"
             },
             {
-                "q_text": "текст вопроса2",
+                "q_text": "2текст вопроса2",
+                "options": [
+                    "ответ 1",
+                    "ответ 2",
+                    "ответ 3",
+                    "ответ 4",
+                    "righrt answ"
+                ],
+                "answ!": "righrt answ"
+            }
+        ],
+        [
+            {
+                "q_text": "3What IPythin is?",
+                "options": [
+                    "interactive interface for python",
+                    "just a shell",
+                    "text editor for the browser"
+                ],
+                "answ!": "interactive interface for python"
+            },
+            {
+                "q_text": "3How can you open IPyhon",
+                "options": [
+                    "in cmd",
+                    "in Ipyhon notebook",
+                    "both wariants"
+                ],
+                "answ!": "both wariants"
+            }
+        ],
+        [
+            {
+                "q_text": "4текст вопроса",
+                "options": [
+                    "абоба 1",
+                    "ответ 2",
+                    "ответ 3",
+                    "ответ 4",
+                    "righrt answ"
+                ],
+                "answ!": "righrt answ"
+            },
+            {
+                "q_text": "4текст вопроса2",
+                "options": [
+                    "ответ 1",
+                    "ответ 2",
+                    "ответ 3",
+                    "ответ 4",
+                    "righrt answ"
+                ],
+                "answ!": "righrt answ"
+            }
+        ],
+        [
+            {
+                "q_text": "5текст вопроса",
+                "options": [
+                    "абоба 1",
+                    "ответ 2",
+                    "ответ 3",
+                    "ответ 4",
+                    "righrt answ"
+                ],
+                "answ!": "righrt answ"
+            },
+            {
+                "q_text": "5текст вопроса2",
                 "options": [
                     "ответ 1",
                     "ответ 2",

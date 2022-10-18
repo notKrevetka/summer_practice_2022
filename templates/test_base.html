@@ -15,21 +15,37 @@
   {%endfor%}
 </div>
 {%endfor%}
-<button class="reg_but_form" value="Check" onclick="f_test_check()">Check answers</button>
+<button class="reg_but_form" value="Check" onclick="f_test_check()">Finish</button>
 <script>
-      function f_test_check(){
-        var rbs = document.getElementsByTagName("input");    
-        for (var i = 0; i < rbs.length; i++) {
-          if(rbs[i].checked){
-            if (rbs[i].name == rbs[i].value){
-            rbs[i].parentElement.style.background ="lightblue";
-            console.log(rbs[i])} else{
-              rbs[i].parentElement.style.background ="red";
-            }
-          } else{
-            rbs[i].parentElement.style.background ="white";
+  function f_test_check() {
+    var norm_answ = 0;
+    var questions = document.getElementsByClassName("question");
+    for (var i = 0; i < questions.length; i++) {
+      var any_checked = false
+      var rbs = questions[i].getElementsByTagName("input");
+      for (var j = 0; j < rbs.length; j++) {
+        if (rbs[j].checked) {
+          any_checked = true;
+          if (rbs[j].name == rbs[j].value) {
+            norm_answ += 1;
+            break;
           }
         }
       }
-    </script>
+      if (!any_checked) {
+        alert("answer on every question");
+        return;
+      }
+    }
+    final_result = String(norm_answ) + "/" + String(questions.length)
+  
+    $.post("/add_test_result",
+      { result: final_result, 
+        test_num: "{{test_num}}",
+        login: "{{session['login']}}" },
+    )
+    $.get("/cabinet.html")
+
+  }
+</script>
 {% endblock %}
