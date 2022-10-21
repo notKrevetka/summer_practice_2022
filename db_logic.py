@@ -41,5 +41,22 @@ def count_users_with_such_login(login):
         stmt1 = users_info.select().where(users_info.c.login == login)
         return len(conn.execute(stmt1).fetchall())
 
-def add_test_try_result():
-    pass
+def add_test_try_result(login, test_num, result):
+    with engine.connect() as conn:
+        stmt1 = tests_results.insert().values(login=login, test_num=test_num, result=result)
+        conn.execute(stmt1)
+
+def get_user_answers(login):
+    with engine.connect() as conn:
+        stmt1 = tests_results.select().where(tests_results.c.login == login)
+        results = conn.execute(stmt1)
+        results = list(map(lambda x: x._asdict(), results))
+        results.sort(key= lambda x: x['try_id'])
+        each_test_results = dict()
+        for row in results:
+            if row['test_num'] in each_test_results.keys():
+                each_test_results [row['test_num']].append(row['result'])
+            else:
+                each_test_results[row['test_num']]= [row['result']]
+        
+        return each_test_results

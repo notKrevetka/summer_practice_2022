@@ -9,8 +9,10 @@
   <h3>{{question["q_text"]}}</h3>
   {%for option in question["options"]: %}
   <div class="answer">
-    <input type="radio" name="{{question['answ!']}}" value="{{option}}">
-    <label>{{option}}</label>
+    <label>
+      <input type="radio" name="{{question['answ!']}}" value="{{option}}">
+      {{option}}
+  </label>
   </div>
   {%endfor%}
 </div>
@@ -38,13 +40,16 @@
       }
     }
     final_result = String(norm_answ) + "/" + String(questions.length)
-  
-    $.post("/add_test_result",
-      { result: final_result, 
+
+    $.post(
+      "/add_test_result",
+      data = {
+        result: final_result,
         test_num: "{{test_num}}",
-        login: "{{session['login']}}" },
+        login: "{{session['login']}}"
+      },
     )
-    $.get("/cabinet.html")
+    location.href='/cabinet.html';
 
   }
 </script>

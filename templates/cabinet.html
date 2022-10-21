@@ -29,11 +29,12 @@
     <div class="col-md-4">
         <h1>Results</h1>
         <ul>
-            {%for test_num in range(1, lectures_total_num+1): %}
+            {%for test_num in tests_results:%}
             <li>
-                <a href="/test_{{test_num}}.html">Test {{test_num }}</a>
+                <p>Test {{test_num }}: {{', '.join(tests_results[test_num])}}</p>
             </li>
             {%endfor%}
+            
         </ul>
 
     </div>

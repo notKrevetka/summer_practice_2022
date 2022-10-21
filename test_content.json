@@ -25,12 +25,11 @@
                 "q_text": "2текст вопроса",
                 "options": [
                     "абоба 1",
-                    "ответ 2",
+                    "righrt ansfw",
                     "ответ 3",
-                    "ответ 4",
-                    "righrt answ"
+                    "ответ 4"
                 ],
-                "answ!": "righrt answ"
+                "answ!": "righrt ansfw"
             },
             {
                 "q_text": "2текст вопроса2",
@@ -72,9 +71,9 @@
                     "ответ 2",
                     "ответ 3",
                     "ответ 4",
-                    "righrt answ"
+                    "righrt anfsw"
                 ],
-                "answ!": "righrt answ"
+                "answ!": "righrt anfsw"
             },
             {
                 "q_text": "4текст вопроса2",
@@ -106,10 +105,9 @@
                     "ответ 1",
                     "ответ 2",
                     "ответ 3",
-                    "ответ 4",
-                    "righrt answ"
+                    "ответ 4"
                 ],
-                "answ!": "righrt answ"
+                "answ!": "ответ 1"
             }
         ]
     ]

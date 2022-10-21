@@ -32,7 +32,8 @@ def login():
 def registration():
     if request.method == 'GET':
         return render_template('registration.html')
-    new_login, new_password, password_check = request.form['login'], request.form['password'],  request.form['password_check']
+    new_login, new_password, password_check = request.form[
+        'login'], request.form['password'],  request.form['password_check']
     such_users = db_logic.count_users_with_such_login(new_login)
     if such_users == 0:
         if new_password == password_check:
@@ -55,7 +56,6 @@ def lecture(lecture_num):
     return render_template(f'/lectures/lecture_{lecture_num}.html', lecture_num=int(lecture_num), lectures_total_num=len(os.listdir('templates/lectures')))
 
 
-
 @server_object.route('/test_<test_num>.html', methods=['GET', 'POST'])
 def test(test_num):
     if request.method == 'GET':
@@ -65,7 +65,7 @@ def test(test_num):
             this_test = all_tests_list[int(test_num)-1]
             print(this_test, test_num)
         return render_template('/test_base.html', test_num=int(test_num), this_test=this_test)
-        
+
 
 @server_object.route('/cabinet.html', methods=['GET', 'POST'])
 def cabinet_content():
@@ -76,13 +76,20 @@ def cabinet_content():
             text = f.read()
         title = re.search(r'<title>(.*)</title>', text).groups()[0]
         titles.append(title)
-    return render_template('/cabinet.html', lectures_total_num=len(os.listdir('templates/lectures')),lectures_list=zip(lectures_list, titles))
+    each_test_results = db_logic.get_user_answers(session['login'])
+    each_test_results= dict(sorted(zip(each_test_results.keys(), each_test_results.values())))
+    print(each_test_results)
+    return render_template('/cabinet.html',
+                           lectures_total_num=len(os.listdir('templates/lectures')),
+                           lectures_list=zip(lectures_list, titles),
+                           tests_results=each_test_results)
 
 
 @server_object.route('/add_test_result', methods=['POST'])
 def add_test_result():
-    print(request.form )
-    
+    db_logic.add_test_try_result(
+        request.form['login'], request.form['test_num'], request.form['result'],)
+
     return "200"
 
 
