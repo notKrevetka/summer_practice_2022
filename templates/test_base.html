@@ -30,17 +30,11 @@
           any_checked = true;
           if (rbs[j].name == rbs[j].value) {
             norm_answ += 1;
-            break;
-          }
-        }
-      }
+            break;}}}
       if (!any_checked) {
         alert("answer on every question");
-        return;
-      }
-    }
+        return;}}
     final_result = String(norm_answ) + "/" + String(questions.length)
-
     $.post(
       "/add_test_result",
       data = {
@@ -50,7 +44,6 @@
       },
     )
     location.href='/cabinet.html';
-
   }
 </script>
 {% endblock %}

@@ -11,10 +11,8 @@ server_object = Flask(__name__)
 def login():
     session['is_logged_in'] = False
     session['login'] = " "
-
     if request.method == 'GET':
         return render_template('login.html')
-
     user_login, user_password = request.form['login'], request.form['password']
     such_users = db_logic.count_users_with_such_login(user_login)
     print('ПОЛЬЗОВАТЕЛЕЙ С ТАКИМ ЛОГИНОМ', such_users)
@@ -26,7 +24,6 @@ def login():
             return redirect('/cabinet.html')
         return render_template('login.html', wrong_password=True)
     return render_template('login.html', wrong_login=True)
-
 
 @server_object.route('/registration.html', methods=['GET', 'POST'])
 def registration():
@@ -53,7 +50,8 @@ def registration():
 
 @server_object.route('/lecture_<lecture_num>.html', methods=['GET', 'POST'])
 def lecture(lecture_num):
-    return render_template(f'/lectures/lecture_{lecture_num}.html', lecture_num=int(lecture_num), lectures_total_num=len(os.listdir('templates/lectures')))
+    return render_template(f'/lectures/lecture_{lecture_num}.html', 
+    lecture_num=int(lecture_num), lectures_total_num=len(os.listdir('templates/lectures')))
 
 
 @server_object.route('/test_<test_num>.html', methods=['GET', 'POST'])
@@ -63,7 +61,6 @@ def test(test_num):
             all_test_obj = json.load(f)
             all_tests_list = all_test_obj["tests"]
             this_test = all_tests_list[int(test_num)-1]
-            print(this_test, test_num)
         return render_template('/test_base.html', test_num=int(test_num), this_test=this_test)
 
 
@@ -89,7 +86,6 @@ def cabinet_content():
 def add_test_result():
     db_logic.add_test_try_result(
         request.form['login'], request.form['test_num'], request.form['result'],)
-
     return "200"
 
 

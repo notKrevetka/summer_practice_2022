@@ -72,14 +72,18 @@ input[type=password] {
   border: none;
   background-color: #ffffff00;
 }
-a{
+a, li{
   text-decoration: none;
   letter-spacing: 1px;
   color: #141414;
-  margin: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 10px;
 }
 a:hover{
   color: #0b6683;
+  border-bottom: .07em solid;
+
 }
 
 .reg_but_form:hover {
@@ -100,4 +104,10 @@ a:hover{
 .answer {
   padding: 4px;
   padding-left: 15px;
+}
+
+h1 {font-size:x-large;}
+
+.no-hover-a:hover{
+  border-bottom: none;
 }

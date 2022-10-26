@@ -14,7 +14,6 @@
             {%endfor%}
         </ul>
     </div>
-
     <div class="col-md-4">
         <h1>Table of Tests</h1>
         <ul>
@@ -24,22 +23,16 @@
             </li>
             {%endfor%}
         </ul>
-
     </div>
     <div class="col-md-4">
         <h1>Results</h1>
         <ul>
             {%for test_num in tests_results:%}
             <li>
-                <p>Test {{test_num }}: {{', '.join(tests_results[test_num])}}</p>
+                Test {{test_num }}: {{', '.join(tests_results[test_num])}}
             </li>
             {%endfor%}
-            
         </ul>
-
     </div>
 </div>
-
-
-
 {% endblock %}
