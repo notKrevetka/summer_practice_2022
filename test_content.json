@@ -22,45 +22,44 @@
         ],
         [
             {
-                "q_text": "2текст вопроса",
+                "q_text": "How to acess a Source Code",
                 "options": [
-                    "абоба 1",
-                    "righrt ansfw",
-                    "ответ 3",
-                    "ответ 4"
+                    " suffix doesn't display any source code",
+                    "with the double question mark (??)",
+                    " String form: <built-in function len>"
                 ],
-                "answ!": "righrt ansfw"
+                "answ!": "with the double question mark (??)"
             },
             {
-                "q_text": "2текст вопроса2",
+                "q_text": "What tab-completion of object contents",
                 "options": [
-                    "ответ 1",
-                    "ответ 2",
-                    "ответ 3",
-                    "ответ 4",
-                    "righrt answ"
+                    "help function",
+                    "dir function ",
+                    "the Tab key",
+                    "L.co<TAB>"
                 ],
-                "answ!": "righrt answ"
+                "answ!": "L.co<TAB>"
             }
         ],
         [
             {
-                "q_text": "3What IPythin is?",
+                "q_text": "What is keystroke Ctrl-a doing?",
                 "options": [
-                    "interactive interface for python",
-                    "just a shell",
-                    "text editor for the browser"
+                    "Move cursor to the beginning of the line",
+                    "Move cursor to the end of the line",
+                    "Move cursor back one character",
+                    "Move cursor forward one character"
                 ],
-                "answ!": "interactive interface for python"
+                "answ!": "Move cursor to the beginning of the line"
             },
             {
-                "q_text": "3How can you open IPyhon",
+                "q_text": "How to clear terminal screen?",
                 "options": [
-                    "in cmd",
-                    "in Ipyhon notebook",
-                    "both wariants"
+                    "Ctrl-l",
+                    "Ctrl-c",
+                    "Ctrl-d"
                 ],
-                "answ!": "both wariants"
+                "answ!": "Ctrl-l"
             }
         ],
         [
